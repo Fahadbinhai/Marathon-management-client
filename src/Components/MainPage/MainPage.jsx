@@ -2,6 +2,7 @@ import React from 'react';
 import Banner from '../Banner/Banner';
 import Navbar from '../Navbar/Navbar';
 import UpcomingMarathon from '../UpcomingMarathon/UpcomingMarathon';
+import Reviews from '../Reviews/Reviews';
 
 const MainPage = () => {
     return (
@@ -23,6 +24,9 @@ const MainPage = () => {
 
                 {/* Upcoming Marathon page */}
                 <UpcomingMarathon></UpcomingMarathon>
+
+                {/* Reviews */}
+                <Reviews></Reviews>
 
                 </main>
 
