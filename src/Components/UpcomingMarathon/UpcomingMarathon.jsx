@@ -3,7 +3,7 @@ import upcoming1 from '../../assets/images/upcoming 1.jpg'
 import upcoming2 from '../../assets/images/upcoming 2.jpg'
 import upcoming3 from '../../assets/images/upcoming 3.jpg'
 import upcoming4 from '../../assets/images/upcoming 4.jpg'
-import { Fade, Slide, Zoom } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 import { IoLocationSharp } from 'react-icons/io5';
 import { FaCalendarDays } from 'react-icons/fa6';
 
