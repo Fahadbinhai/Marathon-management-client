@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from '../Banner/Banner';
 import Navbar from '../Navbar/Navbar';
+import UpcomingMarathon from '../UpcomingMarathon/UpcomingMarathon';
 
 const MainPage = () => {
     return (
@@ -16,6 +17,12 @@ const MainPage = () => {
 
                 {/* main section */}
                 <main>
+
+                {/* Marathon pages needed to add */}
+
+
+                {/* Upcoming Marathon page */}
+                <UpcomingMarathon></UpcomingMarathon>
 
                 </main>
 
