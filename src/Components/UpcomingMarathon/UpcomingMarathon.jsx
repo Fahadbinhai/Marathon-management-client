@@ -5,7 +5,7 @@ import upcoming3 from '../../assets/images/upcoming 3.jpg'
 import upcoming4 from '../../assets/images/upcoming 4.jpg'
 import { Fade } from "react-awesome-reveal";
 import { IoLocationSharp } from 'react-icons/io5';
-import { FaCalendarDays } from 'react-icons/fa6';
+import { FaBullhorn, FaCalendarDays } from 'react-icons/fa6';
 
 
 const UpcomingMarathon = () => {
@@ -27,6 +27,7 @@ const UpcomingMarathon = () => {
                             <p className='flex items-center'> <IoLocationSharp /> Hatirjheel</p>
                             <p className='flex items-center'> <FaCalendarDays /> 02-12-2025</p>
                             <p>By Hatirjheel Society</p>
+                            <p className='flex items-center'><FaBullhorn/> Registration open soon</p>
                             <div className="card-actions justify-end">
                                 <button className="btn btn-primary hover:bg-lime-300 hover:text-black hover:cursor-pointer">Details</button>
                             </div>
@@ -45,6 +46,7 @@ const UpcomingMarathon = () => {
                             <p className='flex items-center'> <IoLocationSharp /> Hatirjheel</p>
                             <p className='flex items-center'> <FaCalendarDays /> 02-12-2025</p>
                             <p>By Run Bangladesh Society</p>
+                            <p className='flex items-center'><FaBullhorn/> Registration open soon</p>
                             <div className="card-actions justify-end">
                                 <button className="btn btn-primary hover:bg-lime-300 hover:text-black hover:cursor-pointer">Details</button>
                             </div>
@@ -63,6 +65,7 @@ const UpcomingMarathon = () => {
                             <p className='flex items-center'> <IoLocationSharp /> Hatirjheel</p>
                             <p className='flex items-center'> <FaCalendarDays /> 02-12-2025</p>
                             <p>By Bangladesh Government </p>
+                            <p className='flex items-center'><FaBullhorn/> Registration open soon</p>
                             <div className="card-actions justify-end">
                                 <button className="btn btn-primary hover:bg-lime-300 hover:text-black hover:cursor-pointer">Details</button>
                             </div>
@@ -70,7 +73,7 @@ const UpcomingMarathon = () => {
                     </div>
 
                     {/* card 4 */}
-                    <div className="card bg-lime-100 image-full w-96 transition-transform duration-500 transform hover:scale-130">
+                    <div className="card bg-lime-100 image-full w-96 transition-transform duration-500 transform hover:scale-115">
                         <figure>
                             <img
                                 src={upcoming4}
@@ -81,13 +84,14 @@ const UpcomingMarathon = () => {
                             <p className='flex items-center'> <IoLocationSharp /> Hatirjheel</p>
                             <p className='flex items-center'> <FaCalendarDays /> 02-12-2025</p>
                             <p>By Olympic Committee</p>
+                            <p className='flex items-center'><FaBullhorn/> Registration open soon</p>
                             <div className="card-actions justify-end">
                                 <button className="btn btn-primary hover:bg-lime-300 hover:text-black hover:cursor-pointer">Details</button>
                             </div>
                         </div>
                     </div>
                     {/* card 5 */}
-                    <div className="card bg-lime-100 image-full w-96 transition-transform duration-500 transform hover:scale-130 ">
+                    <div className="card bg-lime-100 image-full w-96 transition-transform duration-500 transform hover:scale-115 ">
                         <figure>
                             <img
                                 src={upcoming4}
@@ -98,6 +102,7 @@ const UpcomingMarathon = () => {
                             <p className='flex items-center'> <IoLocationSharp /> Hatirjheel</p>
                             <p className='flex items-center'> <FaCalendarDays /> 02-12-2025</p>
                             <p>By Jago Society</p>
+                            <p className='flex items-center'><FaBullhorn/> Registration open soon</p>
                             <div className="card-actions justify-end">
                                 <button className="btn btn-primary hover:bg-lime-300 hover:text-black hover:cursor-pointer">Details</button>
                             </div>
@@ -105,7 +110,7 @@ const UpcomingMarathon = () => {
                     </div>
 
                     {/* card 6 */}
-                    <div className="card bg-lime-100 image-full w-96 transition-transform duration-500 transform hover:scale-130 ">
+                    <div className="card bg-lime-100 image-full w-96 transition-transform duration-500 transform hover:scale-115 ">
                         <figure>
                             <img
                                 src={upcoming4}
@@ -116,6 +121,7 @@ const UpcomingMarathon = () => {
                             <p className='flex items-center'> <IoLocationSharp /> Dhanmondi</p>
                             <p className='flex items-center'> <FaCalendarDays /> 02-12-2025</p>
                             <p>By Society Of Dhanmondi</p>
+                            <p className='flex items-center'><FaBullhorn/> Registration open soon</p>
                             <div className="card-actions justify-end">
                                  <button className="btn btn-primary hover:bg-lime-300 hover:text-black hover:cursor-pointer">Details</button>
                             </div>

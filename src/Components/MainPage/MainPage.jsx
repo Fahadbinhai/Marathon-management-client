@@ -3,6 +3,7 @@ import Banner from '../Banner/Banner';
 import Navbar from '../Navbar/Navbar';
 import UpcomingMarathon from '../UpcomingMarathon/UpcomingMarathon';
 import Reviews from '../Reviews/Reviews';
+import LatestBlogs from '../LatestBlogs/LatestBlogs';
 
 const MainPage = () => {
     return (
@@ -27,6 +28,9 @@ const MainPage = () => {
 
                 {/* Reviews */}
                 <Reviews></Reviews>
+
+                {/* Latest Blogs */}
+                <LatestBlogs></LatestBlogs>
 
                 </main>
 

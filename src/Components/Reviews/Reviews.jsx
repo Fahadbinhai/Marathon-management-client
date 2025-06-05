@@ -5,7 +5,7 @@ import { Fade, Slide, Zoom } from "react-awesome-reveal";
 const Reviews = () => {
     return (
         <Zoom duration={2000}>
-            <div className='mb-20 grid grid-cols-12 gap-8'>
+            <div className='mb-15 grid grid-cols-12 gap-8'>
 
 
                 <div className='col-span-12 md:col-span-4'>
@@ -45,7 +45,7 @@ const Reviews = () => {
 
                     <section className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                         {/* card 1 */}
-                        <div className="card w-96 bg-lime-300 card-xl shadow-sm">
+                        <div className="card w-96 bg-lime-300 card-xl shadow-sm hover:shadow-[0_4px_20px_rgba(34,197,94,0.5)] transition duration-300">
                             <div className="card-body">
                                 <p>Amazing experience! Registering through this website was super easy. I got all the event details in one place, and the reminders were on time. Definitely joining the next one too!</p>
                                 <p className='flex items-center gap-3'><FaStar className='text-amber-300' />4.5</p>
@@ -64,7 +64,7 @@ const Reviews = () => {
                             </div>
                         </div>
                         {/* card 2 */}
-                        <div className="card w-96 bg-lime-300 card-xl shadow-sm">
+                        <div className="card w-96 bg-lime-300 card-xl shadow-sm hover:shadow-[0_4px_20px_rgba(34,197,94,0.5)] transition duration-300">
                             <div className="card-body">
                                 <p>Amazing experience! Registering through this website was super easy. I got all the event details in one place, and the reminders were on time. Definitely joining the next one too!</p>
                                 <p className='flex items-center gap-3'><FaStar className='text-amber-300' />4.5</p>
@@ -83,7 +83,7 @@ const Reviews = () => {
                             </div>
                         </div>
                         {/* card 3 */}
-                        <div className="card w-96 bg-lime-300 card-xl shadow-sm">
+                        <div className="card w-96 bg-lime-300 card-xl shadow-sm hover:shadow-[0_4px_20px_rgba(34,197,94,0.5)] transition duration-300">
                             <div className="card-body">
                                 <p>Amazing experience! Registering through this website was super easy. I got all the event details in one place, and the reminders were on time. Definitely joining the next one too!</p>
                                 <p className='flex items-center gap-3'><FaStar className='text-amber-300' />4.5</p>
@@ -102,7 +102,7 @@ const Reviews = () => {
                             </div>
                         </div>
                         {/* card 4 */}
-                        <div className="card w-96 bg-lime-300 card-xl shadow-sm">
+                        <div className="card w-96 bg-lime-300 card-xl shadow-sm hover:shadow-[0_4px_20px_rgba(34,197,94,0.5)] transition duration-300">
                             <div className="card-body">
                                 <p>Amazing experience! Registering through this website was super easy. I got all the event details in one place, and the reminders were on time. Definitely joining the next one too!</p>
                                 <p className='flex items-center gap-3'><FaStar className='text-amber-300' />4.5</p>
