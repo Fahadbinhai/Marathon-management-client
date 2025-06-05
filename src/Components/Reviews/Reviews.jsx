@@ -4,7 +4,7 @@ import { Fade, Slide, Zoom } from "react-awesome-reveal";
 
 const Reviews = () => {
     return (
-        <Zoom duration={2000}>
+        <Zoom duration={2000} triggerOnce>
             <div className='mb-15 grid grid-cols-12 gap-8'>
 
 
