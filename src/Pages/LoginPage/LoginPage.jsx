@@ -26,7 +26,7 @@ const LoginPage = () => {
 
 
     return (
-        <section className='bg-lime-100 p-10'>
+        <section className='bg-lime-100 min-h-screen p-10'>
             <div className="w-full mx-auto max-w-md p-8 space-y-3 rounded-xl bg-lime-400">
                 <h1 className="text-2xl font-bold text-center">Login Now</h1>
                 <form onSubmit={handleLogIn} className="space-y-6">

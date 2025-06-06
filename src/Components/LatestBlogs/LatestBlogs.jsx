@@ -6,7 +6,7 @@ import latest3 from '../../assets/images/latestnews3.jpg'
 
 const LatestBlogs = () => {
     return (
-        <section className='mb-20'>
+        <section className='pb-20'>
             <Fade triggerOnce delay={1000}>
                 <h3 className='text-5xl font-bold mb-7 text-center'>Ours Latest Blogs !!</h3>
             </Fade>
