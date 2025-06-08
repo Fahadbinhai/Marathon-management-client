@@ -1,27 +1,72 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import { AuthContext } from '../../Context/ContextProvider';
+import Swal from 'sweetalert2';
 
 const Register = () => {
     const [see, setSee] = useState(false)
+
+    const { register } = useContext(AuthContext)
+
+    const navigate = useNavigate();
+
+    // viewing password system
 
     const handleSeePassword = () => {
         setSee(!see)
     }
 
 
+
+
+
+
     // handle register
 
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault()
 
-        const form = e.target 
-        const name = form.name.value 
-        const email = form.email.value 
-        const photo = form.photo.value 
-        const password = form.password.value 
+        const form = e.target
+        const name = form.name.value
+        const email = form.email.value
+        const photo = form.photo.value
+        const password = form.password.value
 
-        console.log(name,email,photo,password)
+        // console.log(name,email,photo,password)
+
+        // sending data to firebase for authentication 
+        try {
+            const newUser = await register(email, password, name, photo)
+
+            if (newUser) {
+
+                Swal.fire({
+                    position: "middle",
+                    icon: "success",
+                    title: "You have Register successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+                navigate('/')
+            }
+        }
+        catch (error) {
+            if (error) {
+                Swal.fire({
+                    position: "middle",
+                    icon: "warning",
+                    title: "Unable to Register",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+
+
+
+
 
     }
 
@@ -40,7 +85,7 @@ const Register = () => {
                         <input type="text" name="email" id="email" placeholder="Email" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
 
                         <label htmlFor="url" className="block text-black">PhotoURL</label>
-                        <input type='url' name="photo" id="photo" placeholder="Username" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <input type='url' name="photo" id="photo" placeholder="photoURL" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="password" className="block text-black">Password</label>

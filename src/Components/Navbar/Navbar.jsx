@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
 import logo from '../../assets/images/marathon-logo.jpg'
+import { AuthContext } from '../../Context/ContextProvider';
 
 const Navbar = () => {
+
+    const { user, logout } = useContext(AuthContext)
+
+    console.log(user)
 
 
     const links = <>
@@ -10,11 +15,21 @@ const Navbar = () => {
         <div className='flex flex-col md:flex-row gap-4'>
             <NavLink>Home</NavLink>
             <NavLink to='/marathons'>Marathons</NavLink>
-            <NavLink to='/dashboard'>DashBoard</NavLink>
+
+            {
+                user && <NavLink to='/dashboard'>DashBoard</NavLink>
+            }
+
         </div>
 
-
     </>
+
+
+    const handleLogout = () => {
+
+        logout()
+
+    }
 
 
     return (
@@ -41,8 +56,22 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-2">
-                <Link to='/login' className="btn">Login</Link>
-                <Link to='/register' className="btn">Register</Link>
+                {
+                    user ? <>
+                        <div className="avatar">
+                            <div className="w-10 mt-0.5 rounded-full">
+                                <img src={user.photoURL} />
+
+                            </div>
+                        </div>
+                        <button onClick={handleLogout} className='btn'>Logout</button>
+                    </> : <>
+                        <Link to='/login' className="btn">Login</Link>
+                        <Link to='/register' className="btn">Register</Link>
+                    </>
+
+
+                }
             </div>
         </div>
     );
