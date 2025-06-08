@@ -7,17 +7,15 @@ const Navbar = () => {
 
     const { user, logout } = useContext(AuthContext)
 
-    console.log(user)
-
 
     const links = <>
 
-        <div className='flex flex-col md:flex-row gap-4'>
-            <NavLink>Home</NavLink>
-            <NavLink to='/marathons'>Marathons</NavLink>
+        <div className='flex flex-col md:flex-row gap-4 text-lg'>
+            <NavLink className={({isActive})=> isActive? 'text-blue-600 underline' : ''} to='/'>Home</NavLink>
+            <NavLink className={({isActive})=> isActive? 'text-blue-600 underline' : ''} to='/marathons'>Marathons</NavLink>
 
             {
-                user && <NavLink to='/dashboard'>DashBoard</NavLink>
+                user && <NavLink className={({isActive})=> isActive? 'text-blue-600 underline' : ''} to='/dashboard'>DashBoard</NavLink>
             }
 
         </div>

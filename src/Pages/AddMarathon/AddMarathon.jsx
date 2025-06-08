@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../Context/ContextProvider';
 
 
 const AddMarathon = () => {
@@ -10,6 +11,9 @@ const AddMarathon = () => {
     const [endDate, setEndDate] = useState(null)
     const [marathonDate, setMarathonDate] = useState(null)
     const [distance, setDistance] = useState('')
+
+    const {user} = useContext(AuthContext)
+    
 
 
     const handleAddMarathon = (e) => {
@@ -21,9 +25,12 @@ const AddMarathon = () => {
         // const distance = form.distance.value
         const description = form.description.value
         const url = form.url.value
+        const user = form.user.value 
+        const userEmail = form.userEmail.value 
+
 
         const addMarathon = {
-            name, location, description, url,
+            name, location, description, url,user,userEmail,
             registrationStarts: startDate,
             distance: distance,
             registrationEnds: endDate,
@@ -137,10 +144,10 @@ const AddMarathon = () => {
                     <input required type="text" name='url' className="input w-full" placeholder="PhotoURL" />
 
                     <label className="label text-black text-base">User Name</label>
-                    <input required type="text" name='user' className="input w-full" placeholder="User Name" />
+                    <input required type="text" name='user' value={user.displayName} className="input w-full" placeholder="User Name" />
 
                     <label className="label text-black text-base">User Email</label>
-                    <input required type="text" name='userEmail' className="input w-full" placeholder="User Email" />
+                    <input required type="text" value={user.email} name='userEmail' className="input w-full" placeholder="User Email" />
 
 
                     <button type='submit' className="btn btn-neutral mt-4">Submit</button>
