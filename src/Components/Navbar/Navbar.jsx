@@ -9,8 +9,8 @@ const Navbar = () => {
 
         <div className='flex flex-col md:flex-row gap-4'>
             <NavLink>Home</NavLink>
-            <NavLink>Marathons</NavLink>
-            <NavLink to='dashboard'>DashBoard</NavLink>
+            <NavLink to='/marathons'>Marathons</NavLink>
+            <NavLink to='/dashboard'>DashBoard</NavLink>
         </div>
 
 

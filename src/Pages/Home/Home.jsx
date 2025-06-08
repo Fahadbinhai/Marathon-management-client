@@ -3,6 +3,7 @@ import Banner from '../../Components/Banner/Banner'
 import UpcomingMarathon from '../../Components/UpcomingMarathon/UpcomingMarathon'
 import Reviews from '../../Components/Reviews/Reviews'
 import LatestBlogs from '../../Components/LatestBlogs/LatestBlogs'
+import Marathons from '../../Components/Marathons/Marathons';
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
 
 
             {/* Marathon pages needed to add */}
+            <Marathons></Marathons>
 
 
 

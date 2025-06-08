@@ -10,7 +10,7 @@ const DashBoard = () => {
     return (
         <div className="flex flex-col md:flex-row min-h-screen">
             {/* Topbar for Mobile */}
-            <div className="bg-lime-600 text-white flex justify-between items-center px-4 py-3 md:hidden">
+            <div className="bg-lime-800 mt-2 text-white flex justify-between items-center px-4 py-3 md:hidden">
                 <h2 className="text-xl font-semibold">Dashboard</h2>
                 <button onClick={toggleSidebar}>
                     <FaBars className="text-2xl" />

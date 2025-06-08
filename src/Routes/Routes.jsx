@@ -10,6 +10,7 @@ import Home from '../Pages/Home/Home';
 import AddMarathon from '../Pages/AddMarathon/AddMarathon';
 import MyMarathonList from '../Pages/MyMarathonList/MyMarathonList';
 import MyApplyPage from '../Pages/MyApplyPage/MyApplyPage';
+import Marathons from '../Components/Marathons/Marathons';
 
 
 
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         Component: MainPage,
+        errorElement: <p>Error 404 page not found</p>,
         children: [
             {
                 path: '/',
@@ -41,6 +43,10 @@ const router = createBrowserRouter([
                     }
                 ]
 
+            },
+            {
+                path: 'marathons',
+                Component: Marathons
             }
         ]
     },
