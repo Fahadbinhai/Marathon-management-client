@@ -1,35 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { AttentionSeeker, Flip, Hinge, JackInTheBox, Roll, Zoom } from 'react-awesome-reveal';
-import { FaCalendarTimes, FaGlobeAmericas, FaMapMarkerAlt, FaRunning } from 'react-icons/fa';
-import { FaAlignLeft, FaCalendarPlus, FaFlagCheckered } from 'react-icons/fa6';
+import React from 'react';
+import { Zoom } from 'react-awesome-reveal';
+import { FaCalendarPlus, FaCalendarTimes, FaGlobeAmericas, FaMapMarkerAlt, FaRunning } from 'react-icons/fa';
+import { Link, useLoaderData } from 'react-router';
 
-const Marathons = () => {
+const AllMarathons = () => {
 
-    const [limit, setLimit] = useState([])
+    const allData = useLoaderData()
 
-    // console.log(limit)
+    // const {_id} = useParams()
 
-    useEffect(() => {
-
-        fetch(`${import.meta.env.VITE_baseUrl}/marathon/limited`)
-            .then(res => res.json())
-            .then(data => setLimit(data))
-
-    }, [])
+    // console.log(allData)
 
 
     return (
-
         <Zoom triggerOnce delay={150}>
 
 
-            <section>
-
-                <h3 className='mb-4 ml-4 text-3xl font-bold'>Marathons</h3>
+            <section className='py-5'>
 
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
                     {
-                        limit?.map(data => (
+                        allData?.map(data => (
                             <div key={data._id} className='h-full'>
                                 <div className="card bg-base-100 w-96 h-[420px] shadow-sm">
                                     <figure className='p-2'>
@@ -49,7 +40,7 @@ const Marathons = () => {
                                         <p className='flex items-center gap-1'> <FaMapMarkerAlt className="text-blue-500" />  Location : {data.location}</p>
                                         <p className='flex items-center gap-1'> <FaRunning className="text-purple-500" /> Distance : {data.distance}</p>
                                         <div className="card-actions justify-end">
-                                            <button className="btn btn-primary">See Details</button>
+                                            <Link to={`/marathonDetails/${data._id}`} className="btn btn-primary">See Details</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -63,4 +54,4 @@ const Marathons = () => {
     );
 };
 
-export default Marathons;
+export default AllMarathons;

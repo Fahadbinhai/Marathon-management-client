@@ -10,7 +10,8 @@ import Home from '../Pages/Home/Home';
 import AddMarathon from '../Pages/AddMarathon/AddMarathon';
 import MyMarathonList from '../Pages/MyMarathonList/MyMarathonList';
 import MyApplyPage from '../Pages/MyApplyPage/MyApplyPage';
-import Marathons from '../Components/Marathons/Marathons';
+import AllMarathons from '../Pages/AllMarathons/AllMarathons';
+import DetailsPage from '../Pages/DetalisPage/DetailsPage';
 
 
 
@@ -46,7 +47,13 @@ const router = createBrowserRouter([
             },
             {
                 path: 'marathons',
-                Component: Marathons
+                Component: AllMarathons,
+                loader: ()=> fetch(`${import.meta.env.VITE_baseUrl}/allMarathon`)
+            },
+            {
+                path: 'marathonDetails/:id',
+                Component: DetailsPage,
+                loader: ({params})=> fetch(`${import.meta.env.VITE_baseUrl}/allMarathon/${params.id}`)
             }
         ]
     },
