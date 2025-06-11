@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zoom } from 'react-awesome-reveal';
+import { Fade } from 'react-awesome-reveal';
 import { FaCalendarPlus, FaCalendarTimes, FaGlobeAmericas, FaMapMarkerAlt, FaRunning } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router';
 
@@ -13,7 +13,7 @@ const AllMarathons = () => {
 
 
     return (
-        <Zoom triggerOnce delay={150}>
+        <Fade triggerOnce delay={150}>
 
 
             <section className='py-5'>
@@ -50,7 +50,7 @@ const AllMarathons = () => {
                 </div>
             </section>
 
-        </Zoom>
+        </Fade>
     );
 };
 

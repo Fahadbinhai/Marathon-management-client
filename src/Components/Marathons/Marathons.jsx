@@ -2,12 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { AttentionSeeker, Flip, Hinge, JackInTheBox, Roll, Zoom } from 'react-awesome-reveal';
 import { FaCalendarTimes, FaGlobeAmericas, FaMapMarkerAlt, FaRunning } from 'react-icons/fa';
 import { FaAlignLeft, FaCalendarPlus, FaFlagCheckered } from 'react-icons/fa6';
+import { Link } from 'react-router';
 
 const Marathons = () => {
 
     const [limit, setLimit] = useState([])
 
-    // console.log(limit)
+    console.log(limit)
+
+    const { _id } = limit
+
+    // console.log(_id)
 
     useEffect(() => {
 
@@ -49,7 +54,7 @@ const Marathons = () => {
                                         <p className='flex items-center gap-1'> <FaMapMarkerAlt className="text-blue-500" />  Location : {data.location}</p>
                                         <p className='flex items-center gap-1'> <FaRunning className="text-purple-500" /> Distance : {data.distance}</p>
                                         <div className="card-actions justify-end">
-                                            <button className="btn btn-primary">See Details</button>
+                                            <Link to={`/marathonDetails/${data._id}`} className="btn btn-primary">See Details</Link>
                                         </div>
                                     </div>
                                 </div>
