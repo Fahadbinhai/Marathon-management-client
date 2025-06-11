@@ -8,9 +8,9 @@ const DetailsPage = () => {
 
     const singleData = useLoaderData();
 
-    const { url, name, registrationStarts, registrationEnds, location, distance, marathonStarts, description, registrationCount } = singleData
+    const { _id,url, name, registrationStarts, registrationEnds, location, distance, marathonStarts, description, registrationCount } = singleData
 
-    // console.log(singleData)
+    console.log(singleData)
 
     const todayDate = new Date();
     const registrationOpenDate = new Date(registrationStarts)
@@ -22,7 +22,7 @@ const DetailsPage = () => {
 
     const isDateInRegistrationPeriod = todayDate >= registrationOpenDate && todayDate <= registrationEndDate
 
-    console.log(isDateInRegistrationPeriod)
+    // console.log(isDateInRegistrationPeriod)
 
 
 
@@ -55,7 +55,7 @@ const DetailsPage = () => {
 
                         <div className='card-actions justify-end'>
                             {
-                                isDateInRegistrationPeriod ? <Link className="btn btn-primary">Register Now</Link> : <button className="btn" disabled="disabled">Registration closed</button>
+                                isDateInRegistrationPeriod ? <Link to={`/marathonRegistrationPage/${_id}`} className="btn btn-primary">Register Now</Link> : <button className="btn" disabled="disabled">Registration closed</button>
                             }
                         </div>
                     </div>

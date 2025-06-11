@@ -23,6 +23,8 @@ const ContextProvider = ({ children }) => {
             .then((user) => {
 
                 const currentUser = user.user
+                // setUser(currentUser)
+                
 
                 return currentUser
 

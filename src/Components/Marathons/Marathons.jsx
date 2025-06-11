@@ -8,7 +8,7 @@ const Marathons = () => {
 
     const [limit, setLimit] = useState([])
 
-    console.log(limit)
+    // console.log(limit)
 
     const { _id } = limit
 
