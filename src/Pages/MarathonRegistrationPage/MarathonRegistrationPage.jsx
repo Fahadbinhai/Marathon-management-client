@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../Context/ContextProvider';
 
 const MarathonRegistrationPage = () => {
 
     const [gender, setGender] = useState('')
+    const {user} = useContext(AuthContext)
 
     const registrationData = useLoaderData();
 
     const navigate = useNavigate()
 
-    const { _id, marathonStarts, userEmail, name } = registrationData;
+    const { _id, marathonStarts,name } = registrationData;
 
     const date = marathonStarts;
     const formattedDate = new Date(date).toLocaleDateString('en-GB');
@@ -33,7 +35,7 @@ const MarathonRegistrationPage = () => {
 
 
         const formData = {
-            marathon, fullName, gender, contact, marathonStart, userEmail, _id
+            marathon, fullName, gender, contact, marathonStart, userEmail, marathonId:_id
         }
 
         // console.log(formData)
@@ -98,7 +100,9 @@ const MarathonRegistrationPage = () => {
                     timer: 1500
                 });
 
-                navigate('/marathons')
+                form.reset();
+                setGender('')
+                navigate('/dashboard/my-apply')
 
                 return
 
@@ -157,7 +161,7 @@ const MarathonRegistrationPage = () => {
 
 
                     <label className="label text-black text-base">Marathon Title</label>
-                    <input required type="text" name='marathon' className="input w-full" value={name} placeholder="Title" />
+                    <input required type="text" name='marathon' className="input w-full" readOnly value={name || ''} placeholder="Title" />
 
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
                         <div className='flex flex-col'>
@@ -205,13 +209,13 @@ const MarathonRegistrationPage = () => {
                     <input required type="text" name='contact' className="input w-full" placeholder="Contact Number" />
 
                     <label className="label text-black text-base">Marathon Starts Date</label>
-                    <input required type="text" name='marathonStart' className="input w-full" value={formattedDate} placeholder="Marathon Starts Date" />
+                    <input readOnly required type="text" name='marathonStart' className="input w-full" value={formattedDate || ''} placeholder="Marathon Starts Date" />
 
                     {/* <label className="label text-black text-base">User Name</label>
                     <input required type="text" name='user' value={``} className="input w-full" placeholder="User Name" /> */}
 
                     <label className="label text-black text-base">User Email</label>
-                    <input required type="text" value={userEmail} name='userEmail' className="input w-full" placeholder="User Email" />
+                    <input readOnly required type="text" value={user?.email || ''} name='userEmail' className="input w-full" placeholder="User Email" />
 
 
                     <button type='submit' className="btn btn-neutral mt-4">Submit</button>
