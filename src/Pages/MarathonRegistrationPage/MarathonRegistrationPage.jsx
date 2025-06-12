@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
 const MarathonRegistrationPage = () => {
 
@@ -7,14 +8,16 @@ const MarathonRegistrationPage = () => {
 
     const registrationData = useLoaderData();
 
-    const {_id,marathonStarts,userEmail,name} = registrationData;
+    const navigate = useNavigate()
+
+    const { _id, marathonStarts, userEmail, name } = registrationData;
 
     const date = marathonStarts;
-    const formattedDate = new Date(date).toLocaleDateString('en-GB'); 
+    const formattedDate = new Date(date).toLocaleDateString('en-GB');
 
 
 
-    const handleRegistration = (e) => {
+    const handleRegistration = async (e) => {
         e.preventDefault()
 
         const form = e.target;
@@ -30,36 +33,114 @@ const MarathonRegistrationPage = () => {
 
 
         const formData = {
-            marathon,fullName,gender,contact,marathonStart,userEmail,_id
+            marathon, fullName, gender, contact, marathonStart, userEmail, _id
         }
 
         // console.log(formData)
 
-        // data adding to the registration collection
-        fetch(`${import.meta.env.VITE_baseUrl}/marathonRegistration`,{
-            method:'POST',
-            headers:{
-                "Content-type" : "application/json"
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(res => res.json())
-        .then(data => console.log('after adding to register collection',data))
+
+        // fetch(`${import.meta.env.VITE_baseUrl}/marathonRegistration`, {
+        //     method: 'POST',
+        //     headers: {
+        //         "Content-type": "application/json"
+        //     },
+        //     body: JSON.stringify(formData)
+        // })
+        //     .then(res => res.json())
+        //     .then(data => console.log('after adding to register collection', data))
+
+
+        try {
+
+            // data adding to the registration collection
+
+            const registration = await fetch(`${import.meta.env.VITE_baseUrl}/marathonRegistration`, {
+                method: 'POST',
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+
+            const response = await registration.json();
+
+            if (registration.status === 400) {
+                Swal.fire({
+                    position: "middle",
+                    icon: "warning",
+                    title: "You have already Register",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+
+                return
+            }
+
+
+            const updateCount = await fetch(`${import.meta.env.VITE_baseUrl}/updateRegisterCount/${_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+
+            })
+
+            const updateData = await updateCount.json();
+
+
+            if (response.insertedId && updateData.modifiedCount > 0) {
+
+                Swal.fire({
+                    position: "middle",
+                    icon: "success",
+                    title: "Successfully Registered",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+                navigate('/marathons')
+
+                return
+
+            }
+
+
+
+
+        }
+        catch (error) {
+            if (error) {
+                Swal.fire({
+                    position: "middle",
+                    icon: "warning",
+                    title: "Unable to Register",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+
+            }
+        }
+
+
+
+
+
+
+
+
 
 
         // for update registration count
 
-        fetch(`${import.meta.env.VITE_baseUrl}/updateRegisterCount/${_id}`,{
-            method: 'PATCH',
-            headers:{
-                'Content-type' : 'application/json'
-            },
-            
-        })
-        .then(res=>res.json())
-        .then(data=>console.log('after increase registration count', data))
+        // fetch(`${import.meta.env.VITE_baseUrl}/updateRegisterCount/${_id}`, {
+        //     method: 'PATCH',
+        //     headers: {
+        //         'Content-type': 'application/json'
+        //     },
 
-
+        // })
+        //     .then(res => res.json())
+        //     .then(updateData => console.log('after increase registration count', updateData))
 
     }
 
@@ -81,12 +162,12 @@ const MarathonRegistrationPage = () => {
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
                         <div className='flex flex-col'>
                             <label className="label text-black text-base mb-1">First Name</label>
-                            <input className='w-full p-2 border rounded input' type="text" name="firstName" id="" placeholder='First Name' />
+                            <input required className='w-full p-2 border rounded input' type="text" name="firstName" id="" placeholder='First Name' />
                         </div>
 
                         <div className='flex flex-col'>
                             <label className="label text-black text-base mb-1">Last Name</label>
-                            <input placeholder='Last Name' className='w-full border rounded input' type="text" name="lastName" id="" />
+                            <input required placeholder='Last Name' className='w-full border rounded input' type="text" name="lastName" id="" />
 
                         </div>
                     </div>
@@ -105,7 +186,7 @@ const MarathonRegistrationPage = () => {
 
                     <label className="label text-black text-base">Gender</label>
                     {/* <input required type="text" name='' className="input w-full" placeholder="Gender" /> */}
-                    <select value={gender} onChange={e => setGender(e.target.value)} className="select w-full" name="gender" id="">
+                    <select required value={gender} onChange={e => setGender(e.target.value)} className="select w-full" name="gender" id="">
                         <option value="" disabled>---- select ----</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
@@ -130,7 +211,7 @@ const MarathonRegistrationPage = () => {
                     <input required type="text" name='user' value={``} className="input w-full" placeholder="User Name" /> */}
 
                     <label className="label text-black text-base">User Email</label>
-                    <input required type="text" value={userEmail}  name='userEmail' className="input w-full" placeholder="User Email" />
+                    <input required type="text" value={userEmail} name='userEmail' className="input w-full" placeholder="User Email" />
 
 
                     <button type='submit' className="btn btn-neutral mt-4">Submit</button>
