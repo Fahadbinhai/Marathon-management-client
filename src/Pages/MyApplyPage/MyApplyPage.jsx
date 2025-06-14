@@ -6,7 +6,7 @@ const MyApplyPage = () => {
 
     const [apply, setApply] = useState([])
     const [selectedItem, setSelectedItem] = useState([])
-    const [changeId, setChangeId] = useState(null)
+
 
 
     const { user } = useContext(AuthContext)
@@ -15,14 +15,21 @@ const MyApplyPage = () => {
     useEffect(() => {
 
         if (user?.email) {
-            fetch(`${import.meta.env.VITE_baseUrl}/marathonRegistration?email=${user?.email}`)
-                .then(res => res.json())
-                .then(data => setApply(data))
+            loadApplyData()
         }
 
 
 
     }, [user?.email])
+
+    // loading data using function
+    const loadApplyData = () => {
+
+        fetch(`${import.meta.env.VITE_baseUrl}/marathonRegistration?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => setApply(data))
+
+    }
 
 
     const handleUpdateModal = (id) => {
@@ -31,23 +38,27 @@ const MyApplyPage = () => {
 
         document.getElementById('my-apply-modal').showModal()
 
-        const willChange = apply.filter(change=>(change._id == id))
+        const willChange = apply.find(change => (change._id == id))
 
         setSelectedItem(willChange)
 
     }
 
     const closeUpdateModal = () => {
-        setChangeId(null)
+
+        document.getElementById('my-apply-modal').close();
 
     }
 
 
-    console.log(selectedItem)
+    // console.log(selectedItem)
 
 
     return (
         <div className="overflow-x-auto px-2">
+
+            <h3 className='mb-5 text-3xl text-center font-medium'>You have Register for following Marathons</h3>
+
             <table className="table w-full min-w-[600px] text-sm md:text-base">
                 {/* head */}
                 <thead className="bg-lime-200 text-gray-700">
@@ -82,8 +93,8 @@ const MyApplyPage = () => {
 
             {
 
-                changeId && (
-                    <MyApplyModal selectedItem={selectedItem} closeUpdateModal={closeUpdateModal} ></MyApplyModal>
+                selectedItem && (
+                    <MyApplyModal selectedItem={selectedItem} closeUpdateModal={closeUpdateModal} loadApplyData={loadApplyData} ></MyApplyModal>
                 )
 
             }

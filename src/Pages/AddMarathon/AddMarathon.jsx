@@ -44,7 +44,7 @@ const AddMarathon = () => {
 
         // sending data to backend
 
-        fetch('http://localhost:3000/allMarathon', {
+        fetch(`${import.meta.env.VITE_baseUrl}/allMarathon`, {
             method: "POST",
             headers: {
 

@@ -10,7 +10,7 @@ const DetailsPage = () => {
 
     const { _id,url, name, registrationStarts, registrationEnds, location, distance, marathonStarts, description, registrationCount } = singleData
 
-    console.log(singleData)
+    // console.log(singleData)
 
     const todayDate = new Date();
     const registrationOpenDate = new Date(registrationStarts)
