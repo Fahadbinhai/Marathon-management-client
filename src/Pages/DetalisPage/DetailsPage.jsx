@@ -2,6 +2,7 @@ import React from 'react';
 import { Zoom } from 'react-awesome-reveal';
 import { FaAlignLeft, FaCalendarPlus, FaCalendarTimes, FaFlagCheckered, FaGlobeAmericas, FaMapMarkerAlt, FaRunning, FaUserPlus } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router';
+import MarathonCountDown from '../../Components/MarathonCountDown/MarathonCountDown';
 
 const DetailsPage = () => {
 
@@ -53,7 +54,8 @@ const DetailsPage = () => {
 
                         {/* registration button */}
 
-                        <div className='card-actions justify-end'>
+                        <div className='card-actions justify-between items-center'>
+                            <MarathonCountDown marathonStarts={marathonStarts}></MarathonCountDown>
                             {
                                 isDateInRegistrationPeriod ? <Link to={`/marathonRegistrationPage/${_id}`} className="btn btn-primary">Register Now</Link> : <button className="btn" disabled="disabled">Registration closed</button>
                             }
