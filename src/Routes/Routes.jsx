@@ -13,6 +13,7 @@ import MyApplyPage from '../Pages/MyApplyPage/MyApplyPage';
 import AllMarathons from '../Pages/AllMarathons/AllMarathons';
 import DetailsPage from '../Pages/DetalisPage/DetailsPage';
 import MarathonRegistrationPage from '../Pages/MarathonRegistrationPage/MarathonRegistrationPage';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 
 
@@ -33,27 +34,32 @@ const router = createBrowserRouter([
                 children:[
                     {
                         path: 'add-marathon',
-                        Component: AddMarathon
+                        // Component: AddMarathon
+                        element: <PrivateRoute> <AddMarathon></AddMarathon> </PrivateRoute>
                     },
                     {
                         path: 'marathon-list',
-                        Component: MyMarathonList
+                        // Component: MyMarathonList
+                        element: <PrivateRoute> <MyMarathonList></MyMarathonList> </PrivateRoute>
                     },
                     {
                         path: 'my-apply',
-                        Component: MyApplyPage
+                        // Component: MyApplyPage
+                        element: <PrivateRoute> <MyApplyPage></MyApplyPage> </PrivateRoute>
                     }
                 ]
 
             },
             {
                 path: 'marathons',
-                Component: AllMarathons,
+                // Component: AllMarathons,
+                element: <PrivateRoute> <AllMarathons></AllMarathons> </PrivateRoute>,
                 loader: ()=> fetch(`${import.meta.env.VITE_baseUrl}/allMarathon`)
             },
             {
                 path: 'marathonDetails/:id',
-                Component: DetailsPage,
+                // Component: DetailsPage,
+                element: <PrivateRoute> <DetailsPage></DetailsPage> </PrivateRoute>,
                 loader: ({params})=> fetch(`${import.meta.env.VITE_baseUrl}/allMarathon/${params.id}`)
             },
             {

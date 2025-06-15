@@ -4,6 +4,7 @@ import UpcomingMarathon from '../../Components/UpcomingMarathon/UpcomingMarathon
 import Reviews from '../../Components/Reviews/Reviews'
 import LatestBlogs from '../../Components/LatestBlogs/LatestBlogs'
 import Marathons from '../../Components/Marathons/Marathons';
+import Footer from '../../Components/Footer/Footer';
 
 const Home = () => {
     return (
@@ -29,6 +30,12 @@ const Home = () => {
 
             {/* Latest Blogs */}
             <LatestBlogs></LatestBlogs>
+
+
+
+            {/* footer section */}
+
+            <Footer></Footer>
 
 
         </div>

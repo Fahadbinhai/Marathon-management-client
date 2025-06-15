@@ -3,6 +3,7 @@ import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/ContextProvider';
 import Swal from 'sweetalert2';
+import { FaArrowCircleLeft } from 'react-icons/fa';
 
 const LoginPage = () => {
 
@@ -84,6 +85,7 @@ const LoginPage = () => {
 
     return (
         <section className='bg-lime-100 min-h-screen p-10'>
+            <Link className='text-center btn btn-primary' to='/'> <FaArrowCircleLeft /> </Link>
             <div className="w-full mx-auto max-w-md p-8 space-y-3 rounded-xl bg-lime-400">
                 <h1 className="text-2xl font-bold text-center">Login Now</h1>
                 <form onSubmit={handleLogIn} className="space-y-6">
@@ -126,7 +128,10 @@ const LoginPage = () => {
                 <p className="text-xs text-center sm:px-6 dark:text-gray-600">Don't have an account?
                     <Link to='/register' className="underline text-blue-600">Register</Link>
                 </p>
+                
             </div>
+
+            
         </section>
     );
 };
