@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Context/ContextProvider';
 import MyApplyModal from '../../Components/MyApplyModal/MyApplyModal';
 import Swal from 'sweetalert2';
+import { IoSearchOutline } from 'react-icons/io5';
 
 const MyApplyPage = () => {
 
     const [apply, setApply] = useState([])
     const [selectedItem, setSelectedItem] = useState([])
+    const [searchText, setSearchText] = useState('')
 
 
     const { user } = useContext(AuthContext)
@@ -99,8 +101,16 @@ const MyApplyPage = () => {
         })
     }
 
+    const handleSearch = (e) => {
+        e.preventDefault()
 
-    // console.log(selectedItem)
+        fetch(`${import.meta.env.VITE_baseUrl}/marathonRegistration?email=${user?.email}&search=${searchText}`)
+        .then(res=>res.json())
+        .then(searchData => setApply(searchData))
+
+    }
+
+
 
 
     return (
@@ -117,7 +127,15 @@ const MyApplyPage = () => {
                         <th>Full Name</th>
                         <th>Gender</th>
                         <th>Contact</th>
-                        <th></th>
+                        <th>
+                            <form onSubmit={handleSearch} className='flex justify-center items-center gap-1'>
+                                <input className='border rounded w-[10rem] h-[2rem] bg-white'
+                                value={searchText}
+                                onChange={(e) => setSearchText(e.target.value)}
+                                type="text" />
+                                <button type='submit' className='btn btn-primary h-[2rem]'><IoSearchOutline /></button>
+                            </form>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
