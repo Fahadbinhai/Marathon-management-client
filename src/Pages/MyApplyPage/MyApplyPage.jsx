@@ -11,8 +11,9 @@ const MyApplyPage = () => {
     const [searchText, setSearchText] = useState('')
 
 
-    const { user } = useContext(AuthContext)
-    // console.log(apply)
+
+    const { user, getAccessToken } = useContext(AuthContext)
+    console.log(apply)
 
     useEffect(() => {
 
@@ -25,11 +26,29 @@ const MyApplyPage = () => {
     }, [user?.email])
 
     // loading data using function
-    const loadApplyData = () => {
+    const loadApplyData = async () => {
 
-        fetch(`${import.meta.env.VITE_baseUrl}/marathonRegistration?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => setApply(data))
+        const token = await getAccessToken();
+
+        console.log('jwt', token)
+
+        const res = await fetch(`${import.meta.env.VITE_baseUrl}/marathonRegistration?email=${user?.email}`, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+                authorization: `Bearer ${token}`
+            }
+        })
+
+
+        const data = await res.json()
+
+        setApply(data)
+
+
+
+        // .then(res => res.json())
+        // .then(data => setApply(data))
 
     }
 
@@ -105,8 +124,8 @@ const MyApplyPage = () => {
         e.preventDefault()
 
         fetch(`${import.meta.env.VITE_baseUrl}/marathonRegistration?email=${user?.email}&search=${searchText}`)
-        .then(res=>res.json())
-        .then(searchData => setApply(searchData))
+            .then(res => res.json())
+            .then(searchData => setApply(searchData))
 
     }
 
@@ -130,9 +149,9 @@ const MyApplyPage = () => {
                         <th>
                             <form onSubmit={handleSearch} className='flex justify-center items-center gap-1'>
                                 <input className='border rounded w-[10rem] h-[2rem] bg-white'
-                                value={searchText}
-                                onChange={(e) => setSearchText(e.target.value)}
-                                type="text" />
+                                    value={searchText}
+                                    onChange={(e) => setSearchText(e.target.value)}
+                                    type="text" />
                                 <button type='submit' className='btn btn-primary h-[2rem]'><IoSearchOutline /></button>
                             </form>
                         </th>

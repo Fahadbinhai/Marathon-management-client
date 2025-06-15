@@ -24,7 +24,7 @@ const ContextProvider = ({ children }) => {
 
                 const currentUser = user.user
                 // setUser(currentUser)
-                
+
 
                 return currentUser
 
@@ -144,6 +144,17 @@ const ContextProvider = ({ children }) => {
     }
 
 
+    // get access token
+
+    const getAccessToken = async () => {
+
+        if (user) {
+            return await user.getIdToken();
+        }
+
+        return null
+    }
+
 
 
 
@@ -155,7 +166,8 @@ const ContextProvider = ({ children }) => {
         user,
         login,
         logout,
-        googleLogin
+        googleLogin,
+        getAccessToken
 
     }
 
