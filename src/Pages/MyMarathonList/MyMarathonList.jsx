@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 const MyMarathonList = () => {
 
-    const { user } = useContext(AuthContext)
+    const { user, getAccessToken } = useContext(AuthContext)
     const [marathons, setMarathons] = useState([])
     const [selectedMarathon, setSelectedMarathon] = useState([])
 
@@ -23,8 +23,16 @@ const MyMarathonList = () => {
 
     // fetching all marathon data
 
-    const myCreatedMarathon = () => {
-        fetch(`${import.meta.env.VITE_baseUrl}/myMarathon?email=${user?.email}`)
+    const myCreatedMarathon = async() => {
+
+        const token = await getAccessToken()
+
+
+        fetch(`${import.meta.env.VITE_baseUrl}/myMarathon?email=${user?.email}`,{
+            headers:{
+                authorization : `Bearer ${token}`
+            }
+        })
             .then(res => res.json())
             .then(data => setMarathons(data))
     }

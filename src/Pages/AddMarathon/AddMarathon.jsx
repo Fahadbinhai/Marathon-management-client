@@ -13,13 +13,14 @@ const AddMarathon = () => {
     const [marathonDate, setMarathonDate] = useState(null)
     const [distance, setDistance] = useState('')
 
-    const {user} = useContext(AuthContext)
+    const { user, getAccessToken } = useContext(AuthContext)
 
     const navigate = useNavigate()
-    
 
 
-    const handleAddMarathon = (e) => {
+
+
+    const handleAddMarathon = async (e) => {
         e.preventDefault()
 
         const form = e.target
@@ -28,12 +29,12 @@ const AddMarathon = () => {
         // const distance = form.distance.value
         const description = form.description.value
         const url = form.url.value
-        const user = form.user.value 
-        const userEmail = form.userEmail.value 
+        const user = form.user.value
+        const userEmail = form.userEmail.value
 
 
         const addMarathon = {
-            name, location, description, url,user,userEmail,
+            name, location, description, url, user, userEmail,
             registrationStarts: startDate,
             distance: distance,
             registrationEnds: endDate,
@@ -44,6 +45,8 @@ const AddMarathon = () => {
 
         // console.log(addMarathon)
 
+        const token = await getAccessToken();
+        console.log(token)
 
         // sending data to backend
 
@@ -51,7 +54,8 @@ const AddMarathon = () => {
             method: "POST",
             headers: {
 
-                "Content-type": "application/json"
+                "Content-type": "application/json",
+                authorization: `Bearer ${token}`
             },
             body: JSON.stringify(addMarathon)
         })
@@ -133,7 +137,7 @@ const AddMarathon = () => {
                     <input required type="text" name='location' className="input w-full" placeholder="Location" />
 
                     <label className="label text-black text-base">Running Distance</label>
-                    <select required name="distance" className="select w-full" value={distance} onChange={(e)=>setDistance(e.target.value)}>
+                    <select required name="distance" className="select w-full" value={distance} onChange={(e) => setDistance(e.target.value)}>
                         <option disabled value=''>Choose distance</option>
                         <option value="5k">5k</option>
                         <option value="10k">10k</option>
@@ -148,10 +152,10 @@ const AddMarathon = () => {
                     <input required type="text" name='url' className="input w-full" placeholder="PhotoURL" />
 
                     <label className="label text-black text-base">User Name</label>
-                    <input required type="text" name='user' value={user.displayName} className="input w-full" placeholder="User Name" />
+                    <input required type="text" name='user' value={user?.displayName} className="input w-full" placeholder="User Name" />
 
                     <label className="label text-black text-base">User Email</label>
-                    <input required type="text" value={user.email} name='userEmail' className="input w-full" placeholder="User Email" />
+                    <input required type="text" value={user?.email} name='userEmail' className="input w-full" placeholder="User Email" />
 
 
                     <button type='submit' className="btn btn-neutral mt-4">Submit</button>
