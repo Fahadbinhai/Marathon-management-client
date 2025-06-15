@@ -81,7 +81,7 @@ const MyApplyPage = () => {
                             <td>{item.contact}</td>
                             <td className='md:space-x-2 flex flex-col gap-2 md:flex-row'>
                                 <button onClick={() => handleUpdateModal(item._id)} className='btn btn-primary hover:bg-lime-300 hover:text-black'> Update </button>
-                                <button className='btn btn-primary hover:bg-red-600 hover:text-black'> Delete </button>
+                                <button className='btn btn-primary hover:bg-red-600 hover:text-white'> Delete </button>
                             </td>
                         </tr>
                     ))}

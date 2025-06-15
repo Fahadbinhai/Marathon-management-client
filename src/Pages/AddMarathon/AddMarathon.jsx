@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Context/ContextProvider';
+import { useNavigate } from 'react-router';
 
 
 const AddMarathon = () => {
@@ -13,6 +14,8 @@ const AddMarathon = () => {
     const [distance, setDistance] = useState('')
 
     const {user} = useContext(AuthContext)
+
+    const navigate = useNavigate()
     
 
 
@@ -68,6 +71,7 @@ const AddMarathon = () => {
                 setEndDate(null)
                 setMarathonDate(null)
                 setDistance('')
+                navigate('/dashboard/marathon-list')
             })
 
 

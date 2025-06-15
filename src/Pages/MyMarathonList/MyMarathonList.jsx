@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Context/ContextProvider';
 import MyMarathonModal from './MyMarathonModal/MyMarathonModal';
+import Swal from 'sweetalert2';
 
 const MyMarathonList = () => {
 
@@ -42,9 +43,60 @@ const MyMarathonList = () => {
 
     // closing modal
 
-    const closingModal =()=>{
+    const closingModal = () => {
 
         document.getElementById('my-marathon-modal').close();
+
+    }
+
+
+    // deleting marathons
+
+    const handleMarathonDelete = (id) => {
+
+        Swal.fire({
+            title: "Are you sure to Delete this marathon?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`${import.meta.env.VITE_baseUrl}/deleteMarathons/${id}`, {
+                    method: "DELETE"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data?.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your marathon has been deleted.",
+                                icon: "success"
+
+                                
+                            });
+                            myCreatedMarathon()
+                        }
+                    })
+
+                    
+            }
+        });
+
+
+
+
+
+
+
+        // const deleteReq = await fetch(`${import.meta.env.VITE_baseUrl}/deleteMarathons/${id}`, {
+        //     method: "DELETE"
+        // })
+
+        // const deleteRes = await deleteReq.json()
 
     }
 
@@ -75,10 +127,10 @@ const MyMarathonList = () => {
                             <td>{item.name}</td>
                             <td>{item.location}</td>
                             <td>{item.distance}</td>
-                            <td>{item.marathonStarts.slice(0,10)}</td>
+                            <td>{item.marathonStarts.slice(0, 10)}</td>
                             <td className='md:space-x-2 flex flex-col gap-2 md:flex-row'>
                                 <button onClick={() => handleMyMarathonModal(item._id)} className='btn btn-primary hover:bg-lime-300 hover:text-black'> Update </button>
-                                <button className='btn btn-primary hover:bg-red-600 hover:text-black'> Delete </button>
+                                <button onClick={()=>handleMarathonDelete(item._id)} className='btn btn-primary hover:bg-red-600 hover:text-white'> Delete </button>
                             </td>
                         </tr>
                     ))}
