@@ -75,8 +75,6 @@ const MyMarathonList = () => {
                                 title: "Deleted!",
                                 text: "Your marathon has been deleted.",
                                 icon: "success"
-
-                                
                             });
                             myCreatedMarathon()
                         }

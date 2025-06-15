@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Context/ContextProvider';
 import MyApplyModal from '../../Components/MyApplyModal/MyApplyModal';
+import Swal from 'sweetalert2';
 
 const MyApplyPage = () => {
 
     const [apply, setApply] = useState([])
     const [selectedItem, setSelectedItem] = useState([])
-
 
 
     const { user } = useContext(AuthContext)
@@ -51,6 +51,55 @@ const MyApplyPage = () => {
     }
 
 
+    // handle cancel registration
+
+    const handleCancelRegistration = (id, countId) => {
+        console.log(id)
+        Swal.fire({
+            title: "Are you sure to Cancel it?",
+
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`${import.meta.env.VITE_baseUrl}/cancelRegistration/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data?.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your Registration has been Successfully Canceled!",
+                                icon: "success"
+
+                            });
+
+                            fetch(`${import.meta.env.VITE_baseUrl}/decreasingRegisterCount/${countId}`, {
+                                method: 'PATCH',
+                                headers: {
+                                    "Content-type": "Application/json"
+                                },
+
+                            })
+                                .then(res => res.json())
+                                .then(() => {
+                                    loadApplyData();
+
+                                })
+
+                        }
+                    })
+
+            }
+
+        })
+    }
+
+
     // console.log(selectedItem)
 
 
@@ -81,7 +130,8 @@ const MyApplyPage = () => {
                             <td>{item.contact}</td>
                             <td className='md:space-x-2 flex flex-col gap-2 md:flex-row'>
                                 <button onClick={() => handleUpdateModal(item._id)} className='btn btn-primary hover:bg-lime-300 hover:text-black'> Update </button>
-                                <button className='btn btn-primary hover:bg-red-600 hover:text-white'> Delete </button>
+                                <button
+                                    onClick={() => handleCancelRegistration(item._id, item.marathonId)} className='btn btn-primary hover:bg-red-600 hover:text-white'> Cancel </button>
                             </td>
                         </tr>
                     ))}
