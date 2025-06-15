@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { FaCalendarPlus, FaCalendarTimes, FaGlobeAmericas, FaMapMarkerAlt, FaRunning } from 'react-icons/fa';
+import { FaFilter } from 'react-icons/fa6';
 import { Link, useLoaderData } from 'react-router';
 
 const AllMarathons = () => {
 
     const allData = useLoaderData()
+    const [showData, setShowData] = useState(allData)
+
 
     // const {_id} = useParams()
 
     // console.log(allData)
+
+    const handleSort =()=>{
+        fetch(`${import.meta.env.VITE_baseUrl}/allMarathon?sort=latest`)
+        .then(res=>res.json())
+        .then(data=>setShowData(data))
+    }
 
 
     return (
@@ -17,10 +26,15 @@ const AllMarathons = () => {
 
 
             <section className='py-5'>
+                <h3 className='font-bold text-2xl text-center'>All Marathons</h3>
+
+                <div className='mb-4 flex justify-end'>
+                    <button onClick={handleSort} className='btn btn-primary'> <FaFilter /> Sort by Latest</button>
+                </div>
 
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
                     {
-                        allData?.map(data => (
+                        showData?.map(data => (
                             <div key={data._id} className='h-full'>
                                 <div className="card bg-base-100 w-96 h-[420px] shadow-sm">
                                     <figure className='p-2'>
