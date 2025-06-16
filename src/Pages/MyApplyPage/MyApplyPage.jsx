@@ -17,7 +17,7 @@ const MyApplyPage = () => {
 
 
 
-    const { user, getAccessToken } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     console.log(apply)
 
     useEffect(() => {
@@ -35,14 +35,12 @@ const MyApplyPage = () => {
 
         setLoading(true)
 
-        const token = await getAccessToken();
-
 
         const res = await fetch(`${import.meta.env.VITE_baseUrl}/marathonRegistration?email=${user?.email}`, {
             method: 'GET',
             headers: {
-                'Content-type': 'application/json',
-                authorization: `Bearer ${token}`
+                'Content-type': 'application/json'
+                
             }
         })
 
