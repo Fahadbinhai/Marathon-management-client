@@ -6,9 +6,14 @@ import { IoSearchOutline } from 'react-icons/io5';
 
 const MyApplyPage = () => {
 
+    useEffect(() => {
+        document.title = 'Marathon || My Applies';
+    }, []);
+
     const [apply, setApply] = useState([])
     const [selectedItem, setSelectedItem] = useState([])
     const [searchText, setSearchText] = useState('')
+    const [loading, setLoading] = useState(true)
 
 
 
@@ -28,9 +33,10 @@ const MyApplyPage = () => {
     // loading data using function
     const loadApplyData = async () => {
 
+        setLoading(true)
+
         const token = await getAccessToken();
 
-        console.log('jwt', token)
 
         const res = await fetch(`${import.meta.env.VITE_baseUrl}/marathonRegistration?email=${user?.email}`, {
             method: 'GET',
@@ -44,6 +50,7 @@ const MyApplyPage = () => {
         const data = await res.json()
 
         setApply(data)
+        setLoading(false)
 
 
 
@@ -130,6 +137,9 @@ const MyApplyPage = () => {
     }
 
 
+    if (loading) {
+        return <span className="loading loading-spinner loading-xl mt-[22rem] ml-[35rem]"></span>
+    }
 
 
     return (

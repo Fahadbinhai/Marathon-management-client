@@ -11,6 +11,10 @@ const DetailsPage = () => {
     const [singleData, setSingleData] = useState(null);
     const { getAccessToken } = useContext(AuthContext)
 
+    useEffect(() => {
+                document.title = 'Marathon || Details';
+            }, []);
+
 
 
     useEffect(() => {

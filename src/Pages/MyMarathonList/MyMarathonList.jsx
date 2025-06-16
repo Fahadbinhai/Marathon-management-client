@@ -5,11 +5,14 @@ import Swal from 'sweetalert2';
 
 const MyMarathonList = () => {
 
+    useEffect(() => {
+        document.title = 'Marathon || My Marathons';
+    }, []);
+
     const { user, getAccessToken } = useContext(AuthContext)
     const [marathons, setMarathons] = useState([])
     const [selectedMarathon, setSelectedMarathon] = useState([])
-
-    // console.log(selectedMarathon)
+    const [spinner, setSpinner] = useState(true)
 
 
     // loading selected data (marathon create by user)
@@ -23,18 +26,22 @@ const MyMarathonList = () => {
 
     // fetching all marathon data
 
-    const myCreatedMarathon = async() => {
+    const myCreatedMarathon = async () => {
 
+        setSpinner(true)
         const token = await getAccessToken()
 
 
-        fetch(`${import.meta.env.VITE_baseUrl}/myMarathon?email=${user?.email}`,{
-            headers:{
-                authorization : `Bearer ${token}`
+        fetch(`${import.meta.env.VITE_baseUrl}/myMarathon?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${token}`
             }
         })
             .then(res => res.json())
-            .then(data => setMarathons(data))
+            .then(data => {
+                setMarathons(data)
+                setSpinner(false)
+            })
     }
 
     // opening modal
@@ -88,7 +95,7 @@ const MyMarathonList = () => {
                         }
                     })
 
-                    
+
             }
         });
 
@@ -107,6 +114,9 @@ const MyMarathonList = () => {
     }
 
 
+    if (spinner) {
+        return <span className="loading loading-spinner loading-xl mt-[22rem] ml-[35rem]"></span>
+    }
 
 
     return (
@@ -136,7 +146,7 @@ const MyMarathonList = () => {
                             <td>{item.marathonStarts.slice(0, 10)}</td>
                             <td className='md:space-x-2 flex flex-col gap-2 md:flex-row'>
                                 <button onClick={() => handleMyMarathonModal(item._id)} className='btn btn-primary hover:bg-lime-300 hover:text-black'> Update </button>
-                                <button onClick={()=>handleMarathonDelete(item._id)} className='btn btn-primary hover:bg-red-600 hover:text-white'> Delete </button>
+                                <button onClick={() => handleMarathonDelete(item._id)} className='btn btn-primary hover:bg-red-600 hover:text-white'> Delete </button>
                             </td>
                         </tr>
                     ))}

@@ -14,6 +14,7 @@ import AllMarathons from '../Pages/AllMarathons/AllMarathons';
 import DetailsPage from '../Pages/DetalisPage/DetailsPage';
 import MarathonRegistrationPage from '../Pages/MarathonRegistrationPage/MarathonRegistrationPage';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 
 
 
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         Component: MainPage,
-        errorElement: <p>Error 404 page not found</p>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router';
 import { FaBars } from 'react-icons/fa';
 
@@ -6,6 +6,10 @@ const DashBoard = () => {
     const [showSidebar, setShowSidebar] = useState(false);
 
     const toggleSidebar = () => setShowSidebar(!showSidebar);
+
+    useEffect(() => {
+                document.title = 'Marathon || Dash-Board';
+            }, []);
 
     return (
         <div className="flex flex-col md:flex-row min-h-screen">

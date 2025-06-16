@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/ContextProvider';
@@ -81,6 +81,9 @@ const LoginPage = () => {
 
     }
 
+    useEffect(() => {
+                document.title = 'Marathon || Login';
+            }, []);
 
 
     return (

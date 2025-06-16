@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { FaCalendarPlus, FaCalendarTimes, FaGlobeAmericas, FaMapMarkerAlt, FaRunning } from 'react-icons/fa';
 import { FaFilter } from 'react-icons/fa6';
@@ -8,17 +8,28 @@ const AllMarathons = () => {
 
     const allData = useLoaderData()
     const [showData, setShowData] = useState(allData)
+    
 
 
-    // const {_id} = useParams()
+  
 
-    // console.log(allData)
-
-    const handleSort =()=>{
+    const handleSort = () => {
+        
         fetch(`${import.meta.env.VITE_baseUrl}/allMarathon?sort=latest`)
-        .then(res=>res.json())
-        .then(data=>setShowData(data))
+            .then(res => res.json())
+            .then(data => {
+                setShowData(data)
+                
+            })
+
     }
+
+
+    useEffect(() => {
+        document.title = 'Marathon || All Marathons';
+    }, []);
+
+
 
 
     return (

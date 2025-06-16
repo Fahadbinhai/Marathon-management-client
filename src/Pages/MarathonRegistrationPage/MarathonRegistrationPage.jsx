@@ -1,9 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Context/ContextProvider';
 
 const MarathonRegistrationPage = () => {
+
+    useEffect(() => {
+                document.title = 'Marathon || Registration Page';
+            }, []);
 
     const [gender, setGender] = useState('')
     const {user} = useContext(AuthContext)
