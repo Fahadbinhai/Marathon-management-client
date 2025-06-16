@@ -60,7 +60,7 @@ const router = createBrowserRouter([
                 path: 'marathonDetails/:id',
                 // Component: DetailsPage,
                 element: <PrivateRoute> <DetailsPage></DetailsPage> </PrivateRoute>,
-                loader: ({params})=> fetch(`${import.meta.env.VITE_baseUrl}/allMarathon/${params.id}`)
+                // loader: ({params})=> fetch(`${import.meta.env.VITE_baseUrl}/allMarathon/${params.id}`)
             },
             {
                 path: 'marathonRegistrationPage/:id',

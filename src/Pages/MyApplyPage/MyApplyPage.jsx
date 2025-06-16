@@ -83,7 +83,7 @@ const MyApplyPage = () => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes, Cancel it!"
         }).then((result) => {
             if (result.isConfirmed) {
                 fetch(`${import.meta.env.VITE_baseUrl}/cancelRegistration/${id}`, {
@@ -93,7 +93,7 @@ const MyApplyPage = () => {
                     .then(data => {
                         if (data?.deletedCount > 0) {
                             Swal.fire({
-                                title: "Deleted!",
+                                title: "Canceled!",
                                 text: "Your Registration has been Successfully Canceled!",
                                 icon: "success"
 

@@ -1,15 +1,60 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Zoom } from 'react-awesome-reveal';
 import { FaAlignLeft, FaCalendarPlus, FaCalendarTimes, FaFlagCheckered, FaGlobeAmericas, FaMapMarkerAlt, FaRunning, FaUserPlus } from 'react-icons/fa';
-import { Link, useLoaderData } from 'react-router';
+import { Link, useParams } from 'react-router';
 import MarathonCountDown from '../../Components/MarathonCountDown/MarathonCountDown';
+import { AuthContext } from '../../Context/ContextProvider';
 
 const DetailsPage = () => {
 
+    const { id } = useParams();
+    const [singleData, setSingleData] = useState(null);
+    const { getAccessToken } = useContext(AuthContext)
 
-    const singleData = useLoaderData();
 
-    const { _id,url, name, registrationStarts, registrationEnds, location, distance, marathonStarts, description, registrationCount } = singleData
+
+    useEffect(() => {
+
+
+        loadingData()
+
+        // fetch(`${import.meta.env.VITE_baseUrl}/allMarathon/${id}`, {
+        //     method: 'GET',
+        //     headers: {
+
+        //     }
+        // })
+        //     .then(res => res.json())
+        //     .then(data => setSingleData(data))
+    }, [id])
+
+
+    const loadingData = async() => {
+
+        const token = await getAccessToken()
+
+        fetch(`${import.meta.env.VITE_baseUrl}/allMarathon/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-type' : 'application/json',
+                authorization : `Bearer ${token}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setSingleData(data))
+
+    }
+
+
+    if (!singleData) {
+        return <span className="loading loading-spinner loading-xl mt-[22rem] ml-[35rem]"></span>
+    }
+
+
+
+    // const singleData = useLoaderData();
+
+    const { _id, url, name, registrationStarts, registrationEnds, location, distance, marathonStarts, description, registrationCount } = singleData
 
     // console.log(singleData)
 
