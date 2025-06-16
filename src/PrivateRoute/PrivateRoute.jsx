@@ -2,11 +2,15 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../Context/ContextProvider';
 import { Navigate } from 'react-router';
 
-const PrivateRoute = ({children}) => {
+const PrivateRoute = ({ children }) => {
 
-    const {user} = useContext(AuthContext)
+    const { user, loading } = useContext(AuthContext)
 
-    if(!user && !user?.email){
+    if (loading) {
+        return <span className="loading loading-spinner loading-xl mt-[22rem] ml-[35rem]"></span>
+    }
+
+    if (!user && !user?.email) {
         return <Navigate to='/login'></Navigate>
     }
 
