@@ -8,8 +8,8 @@ import { FaArrowCircleLeft } from 'react-icons/fa';
 const Register = () => {
 
     useEffect(() => {
-            document.title = 'Marathon || Register';
-        }, []);
+        document.title = 'Marathon || Register';
+    }, []);
 
 
     const [see, setSee] = useState(false)
@@ -81,7 +81,7 @@ const Register = () => {
 
     return (
         <section className='bg-lime-100 min-h-screen p-10'>
-            <Link className='text-center btn btn-primary' to='/'> <FaArrowCircleLeft/> </Link>
+            <Link className='text-center btn btn-primary' to='/'> <FaArrowCircleLeft /> </Link>
             <div className="w-full mx-auto max-w-md p-8 space-y-3 rounded-xl bg-lime-400">
                 <h1 className="text-2xl font-bold text-center">Register Here</h1>
                 <form onSubmit={handleRegister} className="space-y-6">
@@ -96,10 +96,10 @@ const Register = () => {
                         <input type='url' name="photo" id="photo" placeholder="photoURL" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                     </div>
                     <div className="space-y-1 text-sm">
+                        <p className='text-sm mb-3'>**Use at least 6 characters, including a capital letter, a number and a special character**</p> 
                         <label htmlFor="password" className="block text-black">Password</label>
-
                         <div className='flex items-center relative'>
-                            <input type={see ? 'text' : 'password'} name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                            <input minLength={6} pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{6,}$" type={see ? 'text' : 'password'} name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
 
                             <div>
                                 {
