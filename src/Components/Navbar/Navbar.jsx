@@ -45,7 +45,7 @@ const Navbar = () => {
                 </div>
                 <div className='flex items-center'>
                     <img className='w-[50px] h-[50px] rounded-lg sm:block hidden ' src={logo} alt="" />
-                    <a className="btn btn-ghost text-xl">Marathon</a>
+                    <Link to='/' className="btn btn-ghost text-xl">Marathon</Link>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
