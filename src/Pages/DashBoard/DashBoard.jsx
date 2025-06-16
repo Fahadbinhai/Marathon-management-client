@@ -3,6 +3,7 @@ import { Link, Outlet } from 'react-router';
 import { FaBars } from 'react-icons/fa';
 
 const DashBoard = () => {
+
     const [showSidebar, setShowSidebar] = useState(false);
 
     const toggleSidebar = () => setShowSidebar(!showSidebar);

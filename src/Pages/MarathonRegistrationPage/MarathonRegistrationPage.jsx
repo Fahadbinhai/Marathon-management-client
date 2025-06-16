@@ -14,9 +14,9 @@ const MarathonRegistrationPage = () => {
 
     const registrationData = useLoaderData();
 
-    const navigate = useNavigate()
 
     const { _id, marathonStarts,name } = registrationData;
+    const navigate = useNavigate()
 
     const date = marathonStarts;
     const formattedDate = new Date(date).toLocaleDateString('en-GB');

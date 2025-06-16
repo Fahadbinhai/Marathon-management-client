@@ -14,7 +14,7 @@ const UpcomingMarathon = () => {
             <div className='mb-10 sm:p-5'>
                 <h3 className='mb-4 ml-4 text-3xl font-bold'>UpComing Marathons</h3>
 
-                <div className='grid grid-cols-1 md:grid-cols-3 gap-10'>
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-10 max-w-screen'>
                     {/* card 1 */}
                     <div className="card bg-lime-100 image-full w-96 transition-transform duration-500 transform hover:scale-110">
                         <figure>

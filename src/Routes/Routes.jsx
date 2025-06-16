@@ -31,7 +31,8 @@ const router = createBrowserRouter([
             {
 
                 path: 'dashboard',
-                Component: DashBoard,
+                // Component: DashBoard,
+                element: <PrivateRoute> <DashBoard></DashBoard> </PrivateRoute> ,
                 children:[
                     {
                         path: 'add-marathon',

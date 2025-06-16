@@ -36,7 +36,7 @@ const Marathons = () => {
                     {
                         limit?.map(data => (
                             <div key={data._id} className='h-full'>
-                                <div className="card bg-base-100 w-96 h-[420px] shadow-sm">
+                                <div className="card bg-base-100 w-96 h-[420px] 2xl:h-[450px] 2xl:mx-auto shadow-sm">
                                     <figure className='p-2'>
                                         <img
                                             className='rounded w-full h-48'
