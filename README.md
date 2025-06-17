@@ -50,11 +50,11 @@ A full-stack web application where users can create, register for, and manage ma
 
 ## 🧪 Key Functionalities
 
--🏁 Create, Update, Delete your own marathons.
--📝 Register for events & manage registrations from a personal dashboard.
--🔍 Search your applied marathons by title.
--📅 Date validation to ensure upcoming events only.
--🌐 Firebase Hosted and mobile responsive.
+- 🏁 Create, Update, Delete your own marathons.
+- 📝 Register for events & manage registrations from a personal dashboard.
+- 🔍 Search your applied marathons by title.
+- 📅 Date validation to ensure upcoming events only.
+- 🌐 Firebase Hosted and mobile responsive.
 
 ## 🧑‍💼 Author
 
