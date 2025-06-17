@@ -59,7 +59,7 @@ A full-stack web application where users can create, register for, and manage ma
 ## 🧑‍💼 Author
 
 🧑‍💼 Author
-Fahad Bin Hai Tihan
+Fahad Bin Hai Tihan <br>
 💼  MERN Stack Web Developer
 📫 Email: fahadbin0212@gmail.com
 
