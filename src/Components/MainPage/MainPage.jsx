@@ -6,7 +6,7 @@ import { Outlet } from 'react-router';
 const MainPage = () => {
     return (
         <div className='bg-lime-100 min-h-screen'>
-            <section className='mx-5'>
+            <section className='max-w-7xl mx-auto px-4'>
 
                 {/* header section */}
                 <header>
@@ -16,7 +16,7 @@ const MainPage = () => {
                 </header>
 
                 {/* main section */}
-                <main>
+                <main className='py-6'>
                 <Outlet></Outlet>
                 </main>
 
