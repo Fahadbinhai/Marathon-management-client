@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AttentionSeeker, Flip, Hinge, JackInTheBox, Roll, Zoom } from 'react-awesome-reveal';
+import { Fade } from 'react-awesome-reveal';
 import { FaCalendarTimes, FaGlobeAmericas, FaMapMarkerAlt, FaRunning } from 'react-icons/fa';
 import { FaAlignLeft, FaCalendarPlus, FaFlagCheckered } from 'react-icons/fa6';
 import { Link } from 'react-router';
@@ -25,7 +25,7 @@ const Marathons = () => {
 
     return (
 
-        <Zoom triggerOnce delay={150}>
+        <Fade delay={300} >
 
 
             <section>
@@ -64,7 +64,7 @@ const Marathons = () => {
                 </div>
             </section>
 
-        </Zoom>
+        </Fade>
     );
 };
 
