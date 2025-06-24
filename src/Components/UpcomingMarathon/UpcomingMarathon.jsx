@@ -10,7 +10,7 @@ import { FaBullhorn, FaCalendarDays } from 'react-icons/fa6';
 
 const UpcomingMarathon = () => {
     return (
-        <Fade delay={300} >
+        <Fade delay={300} triggerOnce >
             <div className='mb-10 sm:p-5'>
                 <h3 className='mb-4 ml-4 text-3xl font-bold'>UpComing Marathons</h3>
 

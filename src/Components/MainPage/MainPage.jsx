@@ -6,7 +6,7 @@ import { Outlet } from 'react-router';
 const MainPage = () => {
     return (
         <div className='bg-lime-100 min-h-screen'>
-            <section className='max-w-7xl mx-auto px-4'>
+            <section className='max-w-[1360px] mx-auto px-4'>
 
                 {/* header section */}
                 <header>
