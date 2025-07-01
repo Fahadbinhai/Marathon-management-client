@@ -11,11 +11,12 @@ const Navbar = () => {
     const links = <>
 
         <div className='flex flex-col md:flex-row gap-4 text-lg'>
-            <NavLink className={({isActive})=> isActive? 'text-blue-600 underline' : ''} to='/'>Home</NavLink>
-            <NavLink className={({isActive})=> isActive? 'text-blue-600 underline' : ''} to='/marathons'>Marathons</NavLink>
+            <NavLink className={({isActive})=> isActive? 'btn btn-active text-blue-600 font-bold' : ''} to='/'>Home</NavLink>
+            <NavLink className={({isActive})=> isActive? 'btn btn-active text-blue-600 font-bold' : ''} to='/marathons'>Marathons</NavLink>
+            <NavLink className={({isActive})=> isActive? 'btn btn-active text-blue-600 font-bold' : ''} to='/allBlogs'>Blogs</NavLink>
 
             {
-                user && <NavLink className={({isActive})=> isActive? 'text-blue-600 underline' : ''} to='/dashboard'>DashBoard</NavLink>
+                user && <NavLink className={({isActive})=> isActive? 'btn btn-active text-blue-600 font-bold' : ''} to='/dashboard'>DashBoard</NavLink>
             }
 
         </div>

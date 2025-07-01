@@ -36,13 +36,6 @@ const Home = () => {
             {/* Latest Blogs */}
             <LatestBlogs></LatestBlogs>
 
-
-
-            {/* footer section */}
-
-            <Footer></Footer>
-
-
         </div>
     );
 };
