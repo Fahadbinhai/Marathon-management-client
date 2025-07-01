@@ -33,6 +33,8 @@ const AllBlogs = () => {
 
     const repeatBlogs = [...blogs, ...blogs, ...blogs, ...blogs]
 
+    
+
 
 
 

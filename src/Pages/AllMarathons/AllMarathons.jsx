@@ -8,42 +8,31 @@ const AllMarathons = () => {
 
     const allData = useLoaderData()
     const [showData, setShowData] = useState(allData)
-    
-
-
-  
 
     const handleSort = () => {
-        
         fetch(`${import.meta.env.VITE_baseUrl}/allMarathon?sort=latest`)
             .then(res => res.json())
             .then(data => {
                 setShowData(data)
-                
             })
-
     }
-
 
     useEffect(() => {
         document.title = 'Marathon || All Marathons';
     }, []);
 
-
-
-
     return (
         <Fade triggerOnce delay={150}>
-
-
             <section className='py-5'>
                 <h3 className='font-bold text-2xl text-center'>All Marathons</h3>
 
                 <div className='mb-4 flex justify-end'>
-                    <button onClick={handleSort} className='btn btn-primary'> <FaFilter /> Sort by Latest</button>
+                    <button onClick={handleSort} className='btn btn-primary'>
+                        <FaFilter /> Sort by Latest
+                    </button>
                 </div>
 
-                <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'>
                     {
                         showData?.map(data => (
                             <div key={data._id} className='h-full'>
@@ -52,20 +41,30 @@ const AllMarathons = () => {
                                         <img
                                             className='rounded w-full h-48'
                                             src={data.url}
-                                            alt="Shoes" />
+                                            alt={data.name} />
                                     </figure>
                                     <div className="card-body">
-                                        <h2 className="card-title"> <FaGlobeAmericas className='text-blue-500'></FaGlobeAmericas> {data.name}</h2>
-                                        {/* <p className='flex items-center gap-1'>  <FaAlignLeft className="text-gray-500" /> {data.description}</p> */}
+                                        <h2 className="card-title">
+                                            <FaGlobeAmericas className='text-blue-500' /> {data.name}
+                                        </h2>
                                         <div className='flex items-center gap-2'>
-                                            <p className='flex items-center gap-1'> <FaCalendarPlus className="text-green-500" /> Reg Starts : {data.registrationStarts.slice(0, 10)}</p>
-                                            <p className='flex items-center gap-1'> <FaCalendarTimes className="text-red-500" /> Reg Ends : {data.registrationEnds.slice(0, 10)}</p>
+                                            <p className='flex items-center gap-1'>
+                                                <FaCalendarPlus className="text-green-500" /> Reg Starts : {data.registrationStarts.slice(0, 10)}
+                                            </p>
+                                            <p className='flex items-center gap-1'>
+                                                <FaCalendarTimes className="text-red-500" /> Reg Ends : {data.registrationEnds.slice(0, 10)}
+                                            </p>
                                         </div>
-                                        {/* <p className='flex items-center gap-1'> <FaFlagCheckered className="text-yellow-600" /> Marathon Date : {data.marathonStarts.slice(0, 10)}</p> */}
-                                        <p className='flex items-center gap-1'> <FaMapMarkerAlt className="text-blue-500" />  Location : {data.location}</p>
-                                        <p className='flex items-center gap-1'> <FaRunning className="text-purple-500" /> Distance : {data.distance}</p>
+                                        <p className='flex items-center gap-1'>
+                                            <FaMapMarkerAlt className="text-blue-500" /> Location : {data.location}
+                                        </p>
+                                        <p className='flex items-center gap-1'>
+                                            <FaRunning className="text-purple-500" /> Distance : {data.distance}
+                                        </p>
                                         <div className="card-actions justify-end">
-                                            <Link to={`/marathonDetails/${data._id}`} className="btn btn-primary">See Details</Link>
+                                            <Link to={`/marathonDetails/${data._id}`} className="btn btn-primary">
+                                                See Details
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +73,6 @@ const AllMarathons = () => {
                     }
                 </div>
             </section>
-
         </Fade>
     );
 };
