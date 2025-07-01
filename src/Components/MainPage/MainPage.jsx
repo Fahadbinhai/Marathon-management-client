@@ -11,7 +11,7 @@ const MainPage = () => {
             </header>
 
             <main className='flex-1'>
-                <section className='max-w-[1700px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-4 md:py-6'>
+                <section className='max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-4 md:py-6'>
                     <Outlet />
                 </section>
             </main>
