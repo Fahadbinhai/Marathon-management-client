@@ -25,7 +25,7 @@ const DashBoard = () => {
             {/* Sidebar */}
             <aside className={`bg-lime-200 w-full md:w-1/4 lg:w-1/5 p-5 border-r space-y-4 md:block ${showSidebar ? 'block' : 'hidden'}`}>
                 <nav className="flex flex-col space-y-3">
-                    <Link to='/dashboard/add-marathon' className="hover:underline text-lg">Add Marathon</Link>
+                    <Link to='/dashboard' className="hover:underline text-lg">Add Marathon</Link>
                     <Link to='/dashboard/marathon-list' className="hover:underline text-lg">My Marathon List</Link>
                     <Link to='/dashboard/my-apply' className="hover:underline text-lg">My Apply List</Link>
                 </nav>
